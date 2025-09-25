@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from locators.main_page_locators import MainPageLocators
 from .base_page import BasePage
+from selenium import webdriver
 
 class MainPage(BasePage):
     def __init__(self, driver):
@@ -44,5 +45,36 @@ class MainPage(BasePage):
     @allure.step('Клик на логотип "Яндекс"')
     def logo_yandex_click(self):   
         self.driver.find_element(*MainPageLocators.logo_yandex).click()
+    
+    @allure.step('Получить текущий дескриптор окна')
+    def get_current_window_handle(self):
+        return self.driver.current_window_handle
+    
+    @allure.step('Клик на логотип "Яндекс"')
+    def click_yandex_logo(self):
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(MainPageLocators.logo_yandex)
+        ).click()
 
-   
+    @allure.step('Переключение на новое окно и проверка URL')
+    def switch_to_window_and_check_url(self, expected_url):
+        WebDriverWait(self.driver, 10).until(
+            lambda driver: len(driver.window_handles) > 1
+        )
+        
+        current_window = self.driver.current_window_handle
+        for window in self.driver.window_handles:
+            if window != current_window:
+                self.driver.switch_to.window(window)
+                break
+        
+        WebDriverWait(self.driver, 10).until(
+            EC.url_contains(expected_url)
+        )
+        return self.driver.current_url
+    
+    @allure.step('Получение текущего URL')
+    def get_current_url(self):
+        return self.driver.current_url
+
+    

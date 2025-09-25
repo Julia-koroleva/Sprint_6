@@ -38,7 +38,7 @@ class MainPageLocators:
     button_down = [By.CLASS_NAME, "Button_Button__ra12g Button_Middle__1CSJM"]
 
     # Логотип Яндекс на главной странице Яндекс.Самокат
-    logo_yandex = [By.CLASS_NAME, "Header_Logo__23yGT"]
+    logo_yandex = [By.CLASS_NAME, "Header_LogoYandex__3TSOI"]
 
     # Логотип ДЗЭН на странице dzen.ru
     dzen_logo = [By.XPATH, "//a[contains(@href, 'dzen.ru')]"]

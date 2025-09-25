@@ -10,7 +10,8 @@ from selenium.webdriver.support import expected_conditions as EC
 from locators.main_page_locators import MainPageLocators
 from locators.order_page_locators import OrderPageLocators
 from Sprint_6.data import TestData
-from ..pages.base_page import BasePage
+from pages.base_page import BasePage
+
 
 class OrderPage(BasePage):
 
@@ -45,4 +46,6 @@ class OrderPage(BasePage):
 
     @allure.step('Клик на логотип "Самокат" на странице заказа самоката')
     def click_logo_samocat(self):
-        self.driver.find_element(*OrderPageLocators.logo_samocat).click()
+        WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable(OrderPageLocators.logo_samocat)
+        ).click()
