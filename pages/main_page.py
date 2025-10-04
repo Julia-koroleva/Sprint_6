@@ -6,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from locators.main_page_locators import MainPageLocators
 from .base_page import BasePage
+from pages.order_page import OrderPage
 from selenium import webdriver
 
 class MainPage(BasePage):
@@ -19,6 +20,19 @@ class MainPage(BasePage):
     @allure.step('Переход на страницу заказа путем клика на кнопку "Заказать" в футере страницы') 
     def click_button_down(self):
         self.driver.find_element(*MainPageLocators.button_down).click()
+
+    @allure.step('Клик по кнопке Заказать в зависимости от типа кнопки заказать')
+    def click_order_button(self, button_type):
+        if button_type == "top":
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable(MainPageLocators.button_up)
+            ).click()
+        else:  
+            element = self.driver.find_element(*MainPageLocators.button_down)
+            self.driver.execute_script("arguments[0].scrollIntoView();", element)
+            WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable(MainPageLocators.button_down)
+            ).click()
 
     @allure.step('Клик на вопрос по номеру {question_index}')
     def click_question(self, question_index):
@@ -41,11 +55,6 @@ class MainPage(BasePage):
         )
         return answer_element.text
 
-
-    @allure.step('Клик на логотип "Яндекс"')
-    def logo_yandex_click(self):   
-        self.driver.find_element(*MainPageLocators.logo_yandex).click()
-    
     @allure.step('Получить текущий дескриптор окна')
     def get_current_window_handle(self):
         return self.driver.current_window_handle

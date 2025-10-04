@@ -32,10 +32,10 @@ class MainPageLocators:
     main_questions = [By.XPATH, "//div[text()='Вопросы о важном']"]
 
     # Кнопка "Заказать" вверху  страницы
-    button_up = [By.CLASS_NAME, "Button_Button__ra12g"]
+    button_up = [By.XPATH, "//div[@class='Header_Nav__AGCXC']/button[text()='Заказать']"]
 
-    # Кнопка "Заказать" вверху  страницы
-    button_down = [By.CLASS_NAME, "Button_Button__ra12g Button_Middle__1CSJM"]
+    # Кнопка "Заказать" внизу  страницы
+    button_down = [By.XPATH, "//div[@class='Home_FinishButton__1_cWm']/button[text()='Заказать']"]
 
     # Логотип Яндекс на главной странице Яндекс.Самокат
     logo_yandex = [By.CLASS_NAME, "Header_LogoYandex__3TSOI"]

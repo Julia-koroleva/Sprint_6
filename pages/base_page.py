@@ -29,9 +29,10 @@ class BasePage():
 
     @allure.step('Ожидание загрузки  страницы заказа сайта "Яндекс.Самокат"- "Хотите оформить заказ?"')
     def load_order_page_make_order(self):
-        WebDriverWait(self.driver, 5).until(
+        WebDriverWait(self.driver, 10).until(
             EC.visibility_of_element_located(OrderPageLocators.yes_button)
         )
+           
 
     @allure.step('Ожидание загрузки  страницы завершения заказа сайта "Яндекс.Самокат"')
     def load_page_confirm_order(self):
