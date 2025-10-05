@@ -17,10 +17,6 @@ class MainPage(BasePage):
     def click_button_up(self):
         self.driver.find_element(*MainPageLocators.button_up).click()
 
-    @allure.step('Переход на страницу заказа путем клика на кнопку "Заказать" в футере страницы') 
-    def click_button_down(self):
-        self.driver.find_element(*MainPageLocators.button_down).click()
-
     @allure.step('Клик по кнопке Заказать в зависимости от типа кнопки заказать')
     def click_order_button(self, button_type):
         if button_type == "top":
@@ -55,10 +51,6 @@ class MainPage(BasePage):
         )
         return answer_element.text
 
-    @allure.step('Получить текущий дескриптор окна')
-    def get_current_window_handle(self):
-        return self.driver.current_window_handle
-    
     @allure.step('Клик на логотип "Яндекс"')
     def click_yandex_logo(self):
         WebDriverWait(self.driver, 10).until(

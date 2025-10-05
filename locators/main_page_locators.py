@@ -40,5 +40,3 @@ class MainPageLocators:
     # Логотип Яндекс на главной странице Яндекс.Самокат
     logo_yandex = [By.CLASS_NAME, "Header_LogoYandex__3TSOI"]
 
-    # Логотип ДЗЭН на странице dzen.ru
-    dzen_logo = [By.XPATH, "//a[contains(@href, 'dzen.ru')]"]

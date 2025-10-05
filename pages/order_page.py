@@ -77,17 +77,9 @@ class OrderPage(BasePage):
             EC.element_to_be_clickable(OrderPageLocators.logo_samocat)
         ).click()
 
-    @allure.step('Выбор на странице заказа типа самоката "Серая безысходность"')
-    def click_samocat_type(self):
-        self.driver.find_element(*OrderPageLocators.gray_samocat).click()
-    
     @allure.step('Отображение сообщения об успешном оформлении заказа')
     def is_success_message_displayed(self):
         return self.driver.find_element(*OrderPageLocators.order_made).is_displayed()
-    
-    @allure.step('Получение текста сообщения об успехе')
-    def get_success_message_text(self):
-        return self.driver.find_element(*OrderPageLocators.order_made).text
     
     @allure.step('Выбор станции метро')
     def select_metro_station(self, station_name):
@@ -100,10 +92,4 @@ class OrderPage(BasePage):
             EC.element_to_be_clickable(station_locator)
         ).click()
 
-        @allure.step('Клик на выпадающий список периода аренды')
-        def click_rental_period(self):
-            self.driver.find_element(*OrderPageLocators.rental_period)
-            element = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable(OrderPageLocators.rental_period)
-            )
-            self.driver.execute_script("arguments[0].click();", element)
+      

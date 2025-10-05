@@ -45,18 +45,6 @@ class BasePage():
         element = self.driver.find_element(*MainPageLocators.main_questions)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
-    @allure.step('Ожидание загрузки страницы Dzen')
-    def load_page_dzen(self):
-        WebDriverWait(self.driver, 15).until(
-            lambda d: len(d.window_handles) > 1
-    )
-
-    @allure.step('Ожидание загрузки ответов на вопросы на странице "Яндек.Самокат" в разделе "Вопросы о важном"')
-    def load_questions_answers(self, question_index):
-        MainPageLocators.ANSWERS[question_index]
-        WebDriverWait(self.driver, 5).until(
-            EC.visibility_of_element_located(MainPageLocators.ANSWERS)
-        )  
     @allure.step('Ожидание загрузки главной страницы')
     def wait_for_main_page(self):
         WebDriverWait(self.driver, 10).until(
