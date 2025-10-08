@@ -1,10 +1,8 @@
 import pytest
 import allure
 from selenium import webdriver
+from urls import *
 
-main_site = "https://qa-scooter.praktikum-services.ru/"
-order_site = "https://qa-scooter.praktikum-services.ru/order"
-dzen = "https://dzen.ru/"
 
 @pytest.fixture
 def driver():

@@ -10,7 +10,18 @@ class OrderPageLocators:
     metro = [By.XPATH, "//input[@placeholder='* Станция метро']"]
     phone = [By.XPATH, "//input[@placeholder='* Телефон: на него позвонит курьер']"]
     next = [By.XPATH, "//button[text()='Далее']"]
+    dropdown_container = [By.CLASS_NAME, "select-search__select"]
+    station_option = [By.XPATH, "//*[contains(text(), '{}')]"]
+    period_locator = [By.XPATH, "//div[contains(@class, 'Dropdown-option') and text()='{}']"]
 
+    @staticmethod
+    def get_station_locator(station_name):
+        return (By.XPATH, f".//*[contains(text(), '{station_name}')]")
+    
+    @staticmethod
+    def get_period_locator(period):
+        return (By.XPATH, f"//div[contains(@class, 'Dropdown-option') and text()='{period}']")
+    
     # Форма "Про аренду"
     date = [By.XPATH, "//input[@placeholder='* Когда привезти самокат']"]
     rental_period = [By.CLASS_NAME, "Dropdown-root"]
