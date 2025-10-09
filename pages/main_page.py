@@ -10,7 +10,7 @@ class MainPage(BasePage):
 
     @allure.step('Переход на страницу заказа путем клика на кнопку "Заказать" в хедере страницы')
     def click_button_up(self):
-        self.driver.find_element(*MainPageLocators.button_up).click()
+        self.click_element(MainPageLocators.button_up)
 
     @allure.step('Клик по кнопке Заказать в зависимости от типа кнопки заказать')
     def click_order_button(self, button_type):

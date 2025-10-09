@@ -141,4 +141,12 @@ class BasePage():
         element = self.find_element(locator)
         element.send_keys(text)
 
+    @allure.step('Проверка отображения элемента')
+    def is_element_displayed(self, locator, timeout=10):
+        try:
+            element = self.wait_for_element_visible(locator, timeout)
+            return element.is_displayed()
+        except:
+            return False
+
  
