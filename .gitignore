@@ -6,5 +6,4 @@ pages/__pycache__
 pages/.pytest_cache
 tests/__pycache__
 tests/.pytest_cache
-locators/__pycache__/__init__.cpython-313.pyc
-__pacache__/__init__.cpython-313.pyc
+locators/__pycache__/
